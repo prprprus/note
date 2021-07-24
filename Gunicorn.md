@@ -6,9 +6,7 @@ Gunicorn + gevent 时，monkey path 的时机：
 - https://github.com/benoitc/gunicorn/blob/master/gunicorn/workers/ggevent.py#L143
 - https://github.com/benoitc/gunicorn/blob/master/gunicorn/workers/ggevent.py#L38
 
-### Gunicorn + gevent + SQLAlchemy
-
-## 场景：协程之间的非阻塞
+### Gunicorn + gevent + SQLAlchemy 协程之间的非阻塞
 
 版本信息：
 
