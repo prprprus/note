@@ -233,7 +233,7 @@ class OrdersProduct(_BaseMixin):
     product_id = Column(String(255), nullable=False, unique=True)
 ```
 
-### ORM 级别的 SQL 操作
+### 常见 SQL 操作
 
 单表查询：
 
