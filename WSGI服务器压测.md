@@ -29,7 +29,8 @@ data = "ok" * 2000
 
 @app.route("/hello", methods=["GET"])
 def handle():
-    resp = Response(json.dumps({"code": 0, "message": "success", "data": data}, ensure_ascii=False))
+    resp = Response(json.dumps({"code": 0, "message": "success", "data": data},
+                               ensure_ascii=False))
     resp.headers["Content-Type"] = "application/json; charset=utf-8"
     return resp
 ```
