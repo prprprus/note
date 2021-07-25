@@ -1,0 +1,32 @@
+- hosts: nginx
+  vars:
+    - nginx: nginx
+  tasks:
+    - name: === {{ nginx }} task1 ===
+      shell: echo "---> deploy {{ nginx }}"
+    - name: === {{ nginx }} task2 ===
+      shell: echo "---> deploy {{ nginx }}"
+    - name: === {{ nginx }} task3 ===
+      shell: echo "---> deploy {{ nginx }}"
+
+- hosts: backend
+  vars:
+    - backend: backend
+  tasks:
+    - name: === {{ backend }} task1 ===
+      shell: echo "---> deploy {{ backend }}"
+    - name: === {{ backend }} task2 ===
+      shell: echo "---> deploy {{ backend }}"
+    - name: === {{ backend }} task3 ===
+      shell: echo "---> deploy {{ backend }}"
+
+- hosts: db
+  vars:
+    - db: db
+  tasks:
+    - name: === {{ db }} task1 ===
+      shell: echo "---> deploy {{ db }}"
+    - name: === {{ db }} task2 ===
+      shell: echo "---> deploy {{ db }}"
+    - name: === {{ db }} task3 ===
+      shell: echo "---> deploy {{ db }}"

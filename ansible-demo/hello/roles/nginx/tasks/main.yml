@@ -1,0 +1,29 @@
+- name: check {{ nginx_name }} exists
+  tags: check_nginx_exists
+  shell: which nginx
+  ignore_errors: yes
+  register: check_nginx_exists
+
+- name: install {{ nginx_name }}
+  tags: install_nginx
+  apt: name=nginx state=latest
+  when: check_nginx_exists.stdout.find("nginx") == -1
+
+- name: sync {{ nginx_name }} config
+  tags: sync_nginx_config
+  copy:
+    src: nginx.conf
+    dest: /root/tmp
+
+- name: check {{ nginx_name }} config
+  tags: check_nginx_config
+  shell: nginx -t
+  ignore_errors: yes
+  register: check_nginx_config
+
+- name: restart {{ nginx_name }}
+  tags: restart_nginx
+  service:
+    name: nginx
+    state: restarted
+  when: check_nginx_config.stdout.find("successful") == -1
