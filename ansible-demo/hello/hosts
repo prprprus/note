@@ -1,8 +1,8 @@
 [nginx]
-localhost
+104.160.45.92
 
 [backend]
-localhost
+104.160.45.92
 
 [db]
-localhost
+104.160.45.92

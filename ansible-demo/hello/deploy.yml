@@ -1,3 +1,6 @@
+#role --> play
+#roles --> playbook
+
 #ansible-playbook deploy.yml
 #ansible-playbook deploy.yml --skip-tags nginx
 #ansible-playbook deploy.yml --skip-tags check_nginx_exists --skip-tags install_nginx --skip-tags sync_nginx_config --skip-tags check_nginx_config --skip-tags restart_nginx
