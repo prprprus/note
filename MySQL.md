@@ -59,7 +59,7 @@ set global $variable=$value;
 - 给表改名：`ALTER TABLE <old_name> RENAME TO <new_name>;`
 - 删除表：`DROP TABLE IF EXISTS <table_name>;`
 - 建表
-    ```
+    ```sql
     CREATE TABLE user (
         `id` bigint(11) NOT NULL AUTO_INCREMENT,
         `user_id` bigint(11) NOT NULL COMMENT '用户id',
