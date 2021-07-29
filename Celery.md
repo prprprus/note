@@ -262,8 +262,8 @@ app.conf.beat_schedule = {
 - topic：主题交换机。可以进行模糊匹配
     ```
     app.conf.task_queues = (
-        Queue(name='news',  exchange=Exchange(name='cn.*', type='topic'),   routing_key='cn.news'),
-        Queue(name='weather',  exchange=Exchange(name='cn.*', type='topic'),   routing_key='cn.weather'),
+        Queue(name='news', exchange=Exchange(name='cn.*', type='topic'), routing_key='cn.news'),
+        Queue(name='weather', exchange=Exchange(name='cn.*', type='topic'), routing_key='cn.weather'),
     )
     ```
 
@@ -275,9 +275,9 @@ app.conf.task_queues = (
     # 默认交换机 celery, 类型 direct, 绑定了队列 celery
     Queue(name='celery', exchange=Exchange(name='celery', type='direct'), routing_key='celery'),
     # 交换机 media, 类型 direct, 绑定了队列 videos, routing_key 是 media.video
-    Queue(name='videos',  exchange=Exchange(name='media', type='direct'),   routing_key='media.video'),
+    Queue(name='videos', exchange=Exchange(name='media', type='direct'), routing_key='media.video'),
     # 交换机 media, 类型 direct, 绑定了队列 images, routing_key 是 media.image
-    Queue(name='images',  exchange=Exchange(name='media', type='direct'),   routing_key='media.image'),
+    Queue(name='images', exchange=Exchange(name='media', type='direct'), routing_key='media.image'),
 )
 ```
 
@@ -301,8 +301,8 @@ app.conf.task_queues = (
         ```
         app.conf.task_queues = (
             Queue(name='celery', exchange=Exchange(name='celery', type='direct'), routing_key='celery'),
-            Queue(name='videos',  exchange=Exchange(name='media', type='direct'),   routing_key='media.video'),
-            Queue(name='images',  exchange=Exchange(name='media', type='direct'),   routing_key='media.image'),
+            Queue(name='videos', exchange=Exchange(name='media', type='direct'), routing_key='media.video'),
+            Queue(name='images', exchange=Exchange(name='media', type='direct'), routing_key='media.image'),
         )
       
         celery --app=task worker --concurrency=2 --queues=celery
