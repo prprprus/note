@@ -136,3 +136,19 @@ CMD ["gunicorn", "-w", "1", "-k", "gevent", "-b", "0.0.0.0:2333", "main:app"]
       ]
     }
     ```
+
+## 监控 Docker
+
+监控命令：
+
+- `docker ps`
+- `docker images`
+- `docker stats`
+- `docker inspect <image/container>`
+- `docker top <container>`
+- `docker port <container>`
+
+监控工具：
+
+- datadog
+- prometheus
