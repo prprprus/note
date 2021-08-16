@@ -60,13 +60,13 @@
 
 ### migration
 
-#### 步骤
+使用步骤：
 
 1. 更改 model
 2. 创建迁移：python manage.py makemigrations
 3. 应用到数据库：python manage.py migrate
 
-#### migrations 对应的实际 SQL
+使用 migrations 查看对应的实际 SQL：
 
 - python manage.py sqlmigrate $app_name $migration_name
 
@@ -108,6 +108,10 @@
     - $instance.attr = value
     - [将修改保存至对象](https://docs.djangoproject.com/zh-hans/3.2/topics/db/queries/#saving-changes-to-objects)
     - [一次修改多个对象](https://docs.djangoproject.com/zh-hans/3.2/topics/db/queries/#updating-multiple-objects-at-once)
+
+### 事务
+
+- TODO
 
 ### 问题
 
