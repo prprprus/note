@@ -106,6 +106,7 @@
         - [缓存和 QuerySet](https://docs.djangoproject.com/zh-hans/3.2/topics/db/queries/#caching-and-querysets)
         - [执行查询](https://docs.djangoproject.com/zh-hans/3.2/topics/db/queries/#making-queries)
         - [QuerySet API 参考](https://docs.djangoproject.com/zh-hans/3.2/ref/models/querysets/#queryset-api-reference)
+        - [模型关联 API 用法示例](https://docs.djangoproject.com/zh-hans/3.2/topics/db/examples/#examples-of-model-relationship-api-usage)
 - 改：
     - $instance.attr = value
     - [将修改保存至对象](https://docs.djangoproject.com/zh-hans/3.2/topics/db/queries/#saving-changes-to-objects)
@@ -113,7 +114,14 @@
 
 ### 事务
 
-- TODO
+- [显式控制事务](https://docs.djangoproject.com/zh-hans/3.2/topics/db/transactions/#controlling-transactions-explicitly)
+- Django 中的查询相关事务采用自动提交方式
+- [事务提交成功对应的 hook](https://docs.djangoproject.com/zh-hans/3.2/topics/db/transactions/#django.db.transaction.on_commit)
+- [savepoint 和 hook](https://docs.djangoproject.com/zh-hans/3.2/topics/db/transactions/#savepoints)
+
+### 数据库访问优化
+
+- [数据库访问优化](https://docs.djangoproject.com/zh-hans/3.2/topics/db/optimization/#database-access-optimization)
 
 ### 问题
 
