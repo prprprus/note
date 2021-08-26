@@ -45,7 +45,10 @@ set global $variable=$value;
 
 库：
 
-- 创建数据库：`CREATE DATABASE IF NOT EXISTS <database_name> CHARACTER SET <charset_name>;`
+-
+
+创建数据库：`CREATE DATABASE IF NOT EXISTS <database_name> CHARACTER SET <charset_name>;`
+
 - 显示数据库：`SHOW DATABASES;`
 - 删除数据库：`DROP DATABASE <database_name>;`
 - 选择数据库：`USE <database_>name;`
@@ -85,24 +88,31 @@ set global $variable=$value;
 列：
 
 - 新加一个列：`ALTER TABLE <table_name> ADD <column_name> <column_definition>;`
-- 新加多个列：`ALTER TABLE <table_name> ADD <column_name> <column_definition>, ADD <column_name> <column_definition>, ...;`
+-
+
+新加多个列：`ALTER TABLE <table_name> ADD <column_name> <column_definition>, ADD <column_name> <column_definition>, ...;`
+
 - 修改一个列：`ALTER TABLE <table_name> MODIFY <column_name> <column_definition>;`
-- 修改多个列：`ALTER TABLE <table_name> MODIFY <column_name> <column_definition>, MODIFY <column_name> <column_definition>, ...;`
-- 给列改名：`ALTER TABLE <table_name> CHANGE COLUMN <old_name> <new_name> <column_definition>;`
+-
+
+修改多个列：`ALTER TABLE <table_name> MODIFY <column_name> <column_definition>, MODIFY <column_name> <column_definition>, ...;`
+-
+给列改名：`ALTER TABLE <table_name> CHANGE COLUMN <old_name> <new_name> <column_definition>;`
 
 ### DML
 
 SELECT 执行顺序：
 
 ```SQL
-SELECT <column_name>, [AGG_FUNC(<column_name>/<expression>)]
-FROM <table_name>
-JOIN <other_table_name> ON <table_name>.<column_name > = <other_table_name>.<column_name>
+SELECT < column_name >, [AGG_FUNC(< column_name >/< expression >)]
+FROM < table_name >
+    JOIN <other_table_name>
+ON < table_name >.< column_name > = <other_table_name>.< column_name >
 WHERE <filter_expression>
-GROUP BY <column_name>
+GROUP BY < column_name >
 HAVING <filter_expression>
-ORDER BY <column_name> ASC/DESC
-LIMIT <count>;
+ORDER BY < column_name > ASC / DESC
+    LIMIT < count >;
 ```
 
 1. `from ... join ... on`
@@ -167,7 +177,10 @@ ROLLBACK;
 
 ```SQL
 mysql
-> explain select * from employees where first_name = "Georgi";
+> explain
+select *
+from employees
+where first_name = "Georgi";
 +----+-------------+-----------+------------+------+---------------+------+---------+------+--------+----------+-------------+
 | id | select_type | table     | partitions | type | possible_keys | key  | key_len | ref  | rows   | filtered | Extra       |
 +----+-------------+-----------+------------+------+---------------+------+---------+------+--------+----------+-------------+
@@ -220,7 +233,8 @@ mysql
 InnoDB 索引：
 
 - 索引对应的数据结构是什么：B+ 树
-- 为什么不用红黑树：当索引体积太大，内存一次性放不下时，需要从磁盘读取，树高太高的话需要的磁盘 I/O 次数也越多
+- 为什么不用 B 树：B 树的非叶子节点即保存索引列，也保存数据列，而 B+ 树只保存索引列，也就是 B+ 树可以加载更多索引列到内存中
+- 为什么不用红黑树：当数据量太大时，内存不能放下整棵 B+ 树，剩下的部分就需要在磁盘中进行读取，树太高会导致所需要的磁盘随机 IO 次数越多
 - 为什么不用哈希表：哈希表适合做等值查询、一般不适合范围查询
 - 一颗 B+ 树可以存放多少行数据：树高为 3 一般可以存放两千万左右
 
@@ -255,7 +269,11 @@ InnoDB 索引：
 
 - 行锁指的是加在索引列上的锁
 - 一般用于事务中的 SQL 语句
-- 行锁可以细分为：记录锁（Record-Lock）、间隔锁（Gap-Lock）、next-key-lock（记录锁+间隔锁）、插入意向锁（LOCK_INSERT_INTENSION ，只用于 INSERT 语句，是一种特殊的间隔锁）
+-
+
+行锁可以细分为：记录锁（Record-Lock）、间隔锁（Gap-Lock）、next-key-lock（记录锁+间隔锁）、插入意向锁（LOCK_INSERT_INTENSION
+，只用于 INSERT 语句，是一种特殊的间隔锁）
+
 - InnoDB 在 RR 隔离级别下默认加的行锁是 next-key-lock，具体要看索引类型是什么
 - InnoDB 下的读操作是快照读，默认不加锁，而写操作则是默认加写锁
 - 如果是二级索引，会涉及回表加锁
@@ -352,7 +370,10 @@ select...for update;
 
 ## 参考
 
-- MySQL数据库设计规范：https://github.com/jly8866/archer/blob/master/src/docs/mysql_db_design_guide.md#mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83
+-
+
+MySQL数据库设计规范：https://github.com/jly8866/archer/blob/master/src/docs/mysql_db_design_guide.md#mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83
+
 - [一张图彻底搞懂 MySQL 的锁机制](https://learnku.com/articles/39212?order_by=vote_count&)
 - [为什么开发人员必须要了解数据库锁？](https://mp.weixin.qq.com/s/yzXbbutzVJ1hIZgVszIBgw)
 - [MySQL死锁系列-线上死锁问题排查思路](https://cloud.tencent.com/developer/article/1722416)
